@@ -5,9 +5,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
+const cors = require("cors");
+require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var arFinals2023BreakawayRouter = require("./routes/AR-Finals-2023/ar-finals-breakaway");
 
 const liveReloadServer = livereload.createServer();
 liveReloadServer.server.once("connection", () => {
@@ -16,7 +19,11 @@ liveReloadServer.server.once("connection", () => {
   }, 100);
 });
 
+console.log("server running!");
+
 var app = express();
+
+app.use(cors());
 
 app.use(connectLiveReload());
 
@@ -32,6 +39,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/ar-finals-2023-breakaway", arFinals2023BreakawayRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
