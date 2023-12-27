@@ -10,7 +10,7 @@ require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var arFinals2023BreakawayRouter = require("./routes/AR-Finals-2023/ar-finals-breakaway");
+var arFinals2023Router = require("./routes/ar-finals-2023");
 
 const liveReloadServer = livereload.createServer();
 liveReloadServer.server.once("connection", () => {
@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/ar-finals-2023-breakaway", arFinals2023BreakawayRouter);
+app.use("/ar-finals-2023", arFinals2023Router);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
