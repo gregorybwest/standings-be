@@ -34,8 +34,20 @@ const disciplineRoutes = {
 };
 
 Object.entries(disciplineRoutes).forEach(([route, discipline]) => {
-  router.get(`/${route}`, async function (req, res, next) {
-    await fetchSheetData("1Hh80fboDcDqMoIojoF6TOpee9IKKgFuhsN1nCutv5bo", discipline, res);
+  router.get(`/central/${route}`, async function (req, res, next) {
+    await fetchSheetData("1Bvv_V6AamPO0oVB6vkn3vdvFmXcwgLROwAboPhWwxLk", discipline, res);
+  });
+});
+
+Object.entries(disciplineRoutes).forEach(([route, discipline]) => {
+  router.get(`/east/${route}`, async function (req, res, next) {
+    await fetchSheetData("1hSDZ_BRMUt3upn4YzElMyGj_dzi9GwUiDOEr9hH5HFQ", discipline, res);
+  });
+});
+
+Object.entries(disciplineRoutes).forEach(([route, discipline]) => {
+  router.get(`/west/${route}`, async function (req, res, next) {
+    await fetchSheetData("1hV4_aH7TlGQV7zPpQY4YHsh_iK_VxnNwIVQLOK3vMyw", discipline, res);
   });
 });
 
